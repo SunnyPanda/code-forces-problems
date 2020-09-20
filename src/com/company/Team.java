@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Team {
@@ -11,12 +12,9 @@ public class Team {
         int counter = 0;
         for (int i = 0; i < n; i++) {
             final String[] problem = in.nextLine().split(" ");
-            int sureCount = 0;
-            for (int j = 0; j < 3; j++) {
-                if (problem[j].equals("1")) {
-                    sureCount++;
-                }
-            }
+            int sureCount = Arrays.stream(problem)
+                    .map(Integer::parseInt)
+                    .reduce(0, Integer::sum);
             if (sureCount >= 2) {
                 counter++;
             }
